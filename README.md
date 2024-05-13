@@ -41,6 +41,9 @@ I think the sra-human-scrubber comes with the database (kmers?) preinstalled so 
 
 ## Usage
 ```
+knead_for_speed.sh -i manifest.tsv -o Kneaded/ -a fastp -c -c GRCh38_noalt_as/GRCh38_noalt_as -t 10
+
+Options: 
 -i Manifest File (headerless TSV file with sample name and absolute paths to demultiplexed forward and reverse reads) [default: manifest.tsv]  
 -o Output Directory [default: Kneaded/]  
 -a Trimming Algorithm [default: trimmomatic]  
