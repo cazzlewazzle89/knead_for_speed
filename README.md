@@ -1,7 +1,8 @@
 # Knead For Speed
 ### Quality control of host-associated metagenomic data
 Nothing fancy.  
-Just a BASH wrapper script that does quality trimming/filtering of Illumina FASTQ reads, and removes host DNA contamination.  
+Just a BASH wrapper script that does quality trimming/filtering of Illumina FASTQ reads and removes host DNA "contamination".  
+If something doesn't work, or you want support for additional tools, then let me know by raising an issue.  
 
 ## Quick Links
 [Dependencies](https://github.com/cazzlewazzle89/knead_for_speed#dependencies)  
@@ -21,23 +22,27 @@ Just a BASH wrapper script that does quality trimming/filtering of Illumina FAST
 | [Trimmomatic](https://github.com/usadellab/Trimmomatic) | 0.39  |  
 
 ### Installation  
-Conda is definitely the easiest way to install.  
-The provided file `knead_for_speed.yml` contains all the info needed to recreate my conda env on a linux machine. Just download it and use the command below to build the env.  
+Conda/Mamba are definitely the easiest ways to install.  
+The provided file `knead_for_speed.yml` contains all the info needed to recreate my conda env on a linux machine.  
+Just clone the repo and use the command below to build the env.  
 ```bash
-conda env create -f knead_for_speed.yml
-```
+conda env create -f knead_for_speed/knead_for_speed.yml
+```  
+When you build the env, there will be a message from sra-human-scrubber describing how to install the database.  
+I think it is just a single command.  
+Run it if you intend to run the tool at some point.  
+On the other hand, if you plan on using bowtie2, then don't bother and skip to the next section.  
+Or skip the next section entirely if you are ahread of the game and have a bowtie2-formatted host genome index ready-to-go.  
 
 ## Host Database Download
-You can download Bowtie2-formatted databases (indexes/indices - right hand side of the page) for most model organisms [here](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml).  
-They are ready to go after downloading and extracting.  
+You can download Bowtie2-formatted databases (indexes (indices?) - right hand side of the page) for most model organisms [here](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml).  
+They are ready to go after downloading and unzipping.  
 
-For example to use the latest (at time of writing) build of the human reference genome, you could do   
+For example, to use the latest (at time of writing) build of the human reference genome, you could do   
 ```bash
 wget https://genome-idx.s3.amazonaws.com/bt/GRCh38_noalt_as.zip
 unzip GRCh38_noalt_as.zip
-```  
-
-I think the sra-human-scrubber comes with the database (kmers?) preinstalled so you don't need to do anything.  
+```    
 
 ## Usage
 ```bash
@@ -64,4 +69,6 @@ I don't use trimmomatic so will always specify `-a fastp` but I left it as the d
 I also don't understand how to add the option to change the trimmomatic settings by passing a commmand line argument, it always seems to chop off the last few characters. Fixing this is top of my todo list for this repo, but low down on my overall todo list.  
 The options that trimmomatic currently uses are `MINLEN:60 ILLUMINACLIP:NexteraPE-PE.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:50`
 
-
+# TO-DO  
+Fix Trimmomatic options
+Make mouse database for sra-human-scrubber
