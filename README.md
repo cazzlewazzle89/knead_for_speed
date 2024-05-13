@@ -23,7 +23,7 @@ Just a BASH wrapper script that does quality trimming/filtering of Illumina FAST
 ### Installation  
 Conda is definitely the easiest way to install.  
 The provided file `knead_for_speed.yml` contains all the info needed to recreate my conda env on a linux machine. Just download it and use the command below to build the env.  
-```
+```bash
 conda env create -f knead_for_speed.yml
 ```
 
@@ -32,7 +32,7 @@ You can download Bowtie2-formatted databases (indexes/indices - right hand side 
 They are ready to go after downloading and extracting.  
 
 For example to use the latest (at time of writing) build of the human reference genome, you could do   
-```
+```bash
 wget https://genome-idx.s3.amazonaws.com/bt/GRCh38_noalt_as.zip
 unzip GRCh38_noalt_as.zip
 ```  
@@ -40,7 +40,7 @@ unzip GRCh38_noalt_as.zip
 I think the sra-human-scrubber comes with the database (kmers?) preinstalled so you don't need to do anything.  
 
 ## Usage
-```
+```bash
 knead_for_speed.sh -i manifest.tsv -o Kneaded/ -a fastp -c -c GRCh38_noalt_as/GRCh38_noalt_as -t 10
 
 Options: 
@@ -58,9 +58,10 @@ Options:
 -t Threads/CPUs To Use [default: 10]  
 ```
 
-
 ## Note on Defaults 
-By default, `knead_for_speed` will use `trimmomatic` for read QC and `bowtie2` for host removal.  
-I don't use trimmomatic so will always specify `-a fastp` but I left it as the default as this script was designed to mimic the behaviour of `kneaddata` (without the `trf` step) while accepting compressed FASTQ files. 
+By default, `knead_for_speed` will use `trimmomatic` for read QC and `bowtie2_strict` for host removal.  
+I don't use trimmomatic so will always specify `-a fastp` but I left it as the default as this script was designed to mimic the behaviour of `kneaddata` (without the `trf` step) while accepting compressed FASTQ files.  
+I also don't understand how to add the option to change the trimmomatic settings by passing a commmand line argument, it always seems to chop off the last few characters. Fixing this is top of my todo list for this repo, but low down on my overall todo list.  
+The options that trimmomatic currently uses are `MINLEN:60 ILLUMINACLIP:NexteraPE-PE.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:50`
 
 
