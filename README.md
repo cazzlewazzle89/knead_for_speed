@@ -1,11 +1,11 @@
 # Knead For Speed
 ### Quality control of host-associated metagenomic data
 Nothing fancy.  
-Just a BASH wrapper script that uses `Trimmomatic` or `fastp` for quality trimming/filtering of Illumina FASTQ reads, and `Bowtie2` or `sra-human-scrubber` for host DNA contamination.  
+Just a BASH wrapper script that does quality trimming/filtering of Illumina FASTQ reads, and removes host DNA contamination.  
 
 ## Quick Links
-[Dependencies](https://github.com/cazzlewazzle89/knead_for_speed#dependencies)
-[Installation](https://github.com/cazzlewazzle89/knead_for_speed#installation)
+[Dependencies](https://github.com/cazzlewazzle89/knead_for_speed#dependencies)  
+[Installation](https://github.com/cazzlewazzle89/knead_for_speed#installation)  
 [Host Database Download](https://github.com/cazzlewazzle89/knead_for_speed#host-database-download)  
 [Usage](https://github.com/cazzlewazzle89/knead_for_speed#usage)  
 [Note on Defaults](https://github.com/cazzlewazzle89/knead_for_speed#note-on-defaults)  
@@ -40,6 +40,7 @@ unzip GRCh38_noalt_as.zip
 I think the sra-human-scrubber comes with the database (kmers?) preinstalled so you don't need to do anything.  
 
 ## Usage
+```
 -i Manifest File (headerless TSV file with sample name and absolute paths to demultiplexed forward and reverse reads) [default: manifest.tsv]  
 -o Output Directory [default: Kneaded/]  
 -a Trimming Algorithm [default: trimmomatic]  
@@ -51,7 +52,8 @@ I think the sra-human-scrubber comes with the database (kmers?) preinstalled so 
 -c Host DNA Database (If Using Bowtie2)  
     Can specify full or relative path. Name of database must be included  
     eg. If using the example above, you would use `-c GRCh38_noalt_as/GRCh38_noalt_as`
--t Threads/CPUs To Use [default: 10]
+-t Threads/CPUs To Use [default: 10]  
+```
 
 
 ## Note on Defaults 
