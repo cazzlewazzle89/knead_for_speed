@@ -30,9 +30,12 @@ conda env create -f knead_for_speed/knead_for_speed.yml
 ```  
 
 ## Host Database Download
-When you build the env, there will be a message from `sra-human-scrubber` describing how to install the database. I think it is just a single command but I can't remember if off the top of my head. Run it if you intend to run the tool at some point. I tested it briefly and didn't really like it, the version I used requied uncompressed, interleaved FASTQ files, and since the reason for writing this script was to avoid the decompresseing and recompressing that I needed to do with the origianl kneaddata, it seemed pointless. It is included as an option though, using bbtools to interleave and decompress input FASTQ, then using the same script to deinterleave (is that a word?) and compress the output FASTQ. This issue might have been addressed by now, if it has, then ignore my ramblings.    
+When you build the env, there will be a message from `sra-human-scrubber` describing how to install the database.  
+I think it is just a single command but I can't remember if off the top of my head. Run it if you intend to use the tool at some point. I tested it briefly and didn't really like it, the version I used required uncompressed, interleaved FASTQ files, and since the reason for writing this script was to avoid the decompresseing and recompressing that I needed to do with the original kneaddata, it seemed pointless.  
+It is included as an option though, using bbtools to interleave and decompress input FASTQ, then using the same script to deinterleave (is that a word?) and compress the output FASTQ.  
+This issue might have been addressed by now, if it has, then ignore my ramblings.    
 
-If you plan on using bowtie2 for host DNA removal, then don't bother running that command and skip to the next paragraph.  
+If you plan on always using bowtie2 for host DNA removal, then don't bother running that command and skip to the next paragraph.  
 Or skip the next paragraph entirely if you are ahead of the game and have a bowtie2-formatted host genome index ready-to-go.  
 
 You can download Bowtie2-formatted databases (indexes (indices?) - right hand side of the page) for most model organisms [here](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml).  
