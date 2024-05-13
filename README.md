@@ -56,11 +56,11 @@ Options:
 -i Manifest File (headerless TSV file with sample name and absolute paths to demultiplexed forward and reverse reads) [default: manifest.tsv]  
 -o Output Directory [default: Kneaded/]  
 -a Trimming Algorithm [default: trimmomatic]  
-	Currently Implemented: trimmomatic,fastp  
+    Currently Implemented: trimmomatic,fastp  
 -f Host DNA Filtering Method [default: bt2_strict]  
     bt2_strict : Will remove read pairs if Bowtie2 aligns EITHER read host genome  
-	bt2_lenient : Will remove read pairs if Bowtie2 aligns BOTH reads to host genome  
-	srascrubber : Use ncbi::sra-human-scrubber instead of Bowtie2 - currently only works with human samples  
+    bt2_lenient : Will remove read pairs if Bowtie2 aligns BOTH reads to host genome  
+    srascrubber : Use ncbi::sra-human-scrubber instead of Bowtie2 - currently only works with human samples  
 -c Host DNA Database (If Using Bowtie2)  
     Can specify full or relative path. Name of database must be included  
     eg. If using the example above, you would use `-c GRCh38_noalt_as/GRCh38_noalt_as`
