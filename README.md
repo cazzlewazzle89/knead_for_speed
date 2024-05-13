@@ -69,9 +69,10 @@ Options:
 ## Note on Defaults 
 By default, `knead_for_speed` will use `trimmomatic` for read QC and `bowtie2_strict` for host removal.  
 I don't use trimmomatic so will always specify `-a fastp` but I left it as the default as this script was designed to mimic the behaviour of `kneaddata` (without the `trf` step) while accepting compressed FASTQ files.  
-I also don't understand how to add the option to change the trimmomatic settings by passing a commmand line argument, it always seems to chop off the last few characters. Fixing this is top of my todo list for this repo, but low down on my overall todo list.  
+I also don't understand how to add the option to change the trimmomatic settings by passing a commmand line argument, it always seems to chop off the last few characters.  
+Fixing this is top of my todo list for this repo, but low down on my overall todo list.  
 The options that trimmomatic currently uses are `MINLEN:60 ILLUMINACLIP:NexteraPE-PE.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:50`
 
 # TO-DO  
-Fix Trimmomatic options
+Fix Trimmomatic options  
 Make mouse database for sra-human-scrubber
