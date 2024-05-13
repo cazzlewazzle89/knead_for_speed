@@ -169,7 +169,7 @@ do
         bowtie2 \
             --threads $flag_threads \
             --seed 42 \
-            -x "$bt2db" \
+            -x "$flag_hostdatabase" \
             -1 "$flag_outdir"/"$sample"_R1_paired.fastq.gz \
             -2 "$flag_outdir"/"$sample"_R2_paired.fastq.gz | samtools view -b > "$flag_outdir"/"$sample".bam 
 
